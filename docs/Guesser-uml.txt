@@ -1,0 +1,15 @@
+Guesser
+------------
+<final> sonnet: String
+<final> words: Array of strings
+<final> length: integer
+randomIndex: integer
+targetWord: String
+------------
+getRandomIndex()
+getTargetWord()
+setRandomIndex()
+setTargetWord()
+generateRandomIndexAndWord()
+printSonnet()
+checkGuess(String userGuess)

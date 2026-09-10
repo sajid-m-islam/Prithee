@@ -5,22 +5,21 @@ This program allows users to learn this sonnet by having them guess random words
 
 ----------------
 How to run the program:
-     1.) Open your terminal and navigate to the directory with the source folder
-     2.)
+     1.) Open your terminal and navigate to the parent, Prithee directory
+     2.) Run ./gradlew run
 ----------------
 
 ----------------
 Pseudocode:
-Wolves = Number
-Rabbits = Number
-Months = Number
-Repeat Months times:
-    if Rabbits >= 2 * Wolves:
-        Rabbits is decreased by 2 * Wolves
-    else:
-        Wolves is (Rabbits + 1) / 2
-        Rabbits is 0
-
-    Rabbits is increased by (Rabbits / 2) * 5
-    Wolves is increased by (Wolves / 2)
+correct = Number
+incorrect = Number
+Repeat while correct < 3 and incorrect < 3:
+    Generate random index and word to guess
+    Print sonnet up to that word
+    Print underscored in place of the word to guess
+    Read user input
+    Check if guess is correct
+    if guess is correct: correct += 1
+    otherwise: incorrect += 1
+Print scores
 ----------------

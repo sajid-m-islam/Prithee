@@ -1,0 +1,6 @@
+targetWord        Guess        Result
+thou              thou         correct
+thou              tou          incorrect
+thou              Thou         correct
+thou              THOU         correct
+thou              T HOU        incorrect
