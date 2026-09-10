@@ -1,6 +1,7 @@
+import java.util.Random;
 import java.util.Scanner;
 
-public class Guess {
+public class Guesser {
     /**
      * This is the class that allows users to guess a random word of the sonnet
      */
@@ -25,26 +26,48 @@ public class Guess {
     private static final String[] words = sonnet.split("\\h+|(?<=\\n)|(?=\\n)");
     private static final int length = words.length;
 
-    static Scanner input = new Scanner(System.in);
+    // Private variables
+    private int randomIndex;
+    private String targetWord;
 
-    // Gets a random word and checks user's guess
-    public static boolean checkGuess() {
-        // Get a random valid index
-        int randomIndex = (int)(Math.random() * length);
+    // Constructor, no args, calls helper function
+    public Guesser() {
+        generateRandomIndexAndWord();
+    }
 
-        // Regenerate random index if word to be guessed is new line character
+    // Getters and setters
+    public int getRandomIndex() {
+        return randomIndex;
+    }
+
+    public void setRandomIndex(int randomIndex) {
+        this.randomIndex = randomIndex;
+    }
+
+    public String getTargetWord() {
+        return targetWord;
+    }
+
+    public void setTargetWord(String targetWord) {
+        this.targetWord = targetWord;
+    }
+
+    // Generates a random index and sets target word to word and that index
+    public void generateRandomIndexAndWord() {
+        this.randomIndex = (int)(Math.random() * length);
+
+        // Skips new line character
         while (words[randomIndex].equals("\n")) {
-            randomIndex = (int)(Math.random() * length);
+            this.randomIndex = (int)(Math.random() * length);
         }
-        String targetWord = words[randomIndex];
+        this.targetWord = words[randomIndex].replaceAll("[^a-zA-Z]", "");
 
-        // Remove any non-letter characters
-        targetWord = targetWord.replaceAll("[^a-zA-Z]", "");
+    }
 
-        System.out.println("Guessing " + targetWord);
-
+    // Prints the sonnet up to the target word and prints underscores in place of the target word
+    public void printSonnet() {
         // Print sonnet up to target word
-        for (int i = 0; i < randomIndex; i++) {
+        for (int i = 0; i < this.randomIndex; i++) {
             if (words[i].equals("\n")) {
                 System.out.print("\n");
             }
@@ -54,15 +77,15 @@ public class Guess {
         }
 
         // Print underscores for length of target word
-        for (int j = 0; j < targetWord.length(); j++) {
+        for (int j = 0; j < this.targetWord.length(); j++) {
             System.out.print("_");
         }
         System.out.println();
-        System.out.println("What is the next word? ");
+    }
 
-
-        // Read input from command line and check if guess is correct
-        String userGuess = input.nextLine();
+    // Gets a random word and checks user's guess
+    public boolean checkGuess(String userGuess) {
+        // Check if guess is correct
         if (userGuess.equalsIgnoreCase(targetWord)) {
             System.out.println("Correct!");
             return true;
@@ -70,6 +93,4 @@ public class Guess {
         System.out.println("Incorrect.");
         return false;
     }
-
-
 }
