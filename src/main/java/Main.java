@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main {
     /**
-     * This is the class that handles calling the checkGuess function
+     * This is the class that take user input
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
