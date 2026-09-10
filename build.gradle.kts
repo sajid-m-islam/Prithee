@@ -1,9 +1,18 @@
 plugins {
     id("java")
+    id("application")
 }
 
 group = "edu.virginia.cs"
 version = "1.0-SNAPSHOT"
+
+application {
+    mainClass.set("Main")
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
 
 repositories {
     mavenCentral()
